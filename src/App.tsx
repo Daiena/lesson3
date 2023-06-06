@@ -2,6 +2,7 @@ import MyButton from './components/MyButton';
 import Profile from './components/Profile';
 import Product, { IProduct } from "./components/Product";
 import ProductList from './components/ProductList';
+import Counter from './components/Counter';
 
 function App() {
   const products: IProduct[]=[
@@ -35,6 +36,8 @@ function App() {
       <MyButton onClick={showAlert}>кнопка</MyButton>
       <MyButton onClick={showAlert2}>кнопка 2</MyButton>
       <ProductList products={products} />
+      <Counter />
+      <Counter />
     </div>
   );
 }
