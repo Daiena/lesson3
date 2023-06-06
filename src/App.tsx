@@ -21,11 +21,19 @@ function App() {
 }
   ]
  
+  const showAlert=()=>{
+    alert ("Нажата кнопка 1");
+  }
+  const showAlert2=()=>{
+    alert ("Нажата кнопка 2");
+  }
+
   return (
     <div>
       <h1>Мое первое приложение на React</h1>
       <Profile />
-      <MyButton />
+      <MyButton onClick={showAlert}>кнопка</MyButton>
+      <MyButton onClick={showAlert2}>кнопка 2</MyButton>
       <ProductList products={products} />
     </div>
   );
