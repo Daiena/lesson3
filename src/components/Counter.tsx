@@ -1,11 +1,13 @@
 import { useState } from "react";
 import MyButton from "./MyButton";
 
-const Counter=()=>{
-    const [count, setCount]=useState<number>(0);
-    const onIncrement=()=>{
-        setCount(count+1);
-    };
+interface CounterProps{
+    count: number;
+    onIncrement: React.MouseEventHandler<HTMLButtonElement>
+}
+
+const Counter=({count, onIncrement}:CounterProps)=>{
+   
     return(
         <div>
             <strong>{count}</strong>
