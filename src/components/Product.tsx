@@ -28,6 +28,7 @@ const Product=({product}: ProductProps)=>{
         <span className="span">{price*count}</span>
         <MyButton onClick={onClickIncrement}>+1</MyButton>
         <MyButton onClick={onClickDecrement}>-1</MyButton>
+        <MyButton onClick={onClickDecrement}>Удалить</MyButton>
     </div>
    )
 }

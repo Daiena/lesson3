@@ -1,16 +1,11 @@
 interface myBattonProps{
     children:string;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    type?: "button" | "submit" | "reset";
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
-const MyButton=({children, onClick}:myBattonProps)=>{
+const MyButton=({children, type="button", onClick}:myBattonProps)=>{
     
-    return <button onClick={onClick}>{children}</button>
+    return <button type={type} onClick={onClick}>{children}</button>
 };
 
 export default MyButton;
-
-// function MyButton(){
-//     return (
-//         <button>Моя кнопка</button>
-//     );
-// }

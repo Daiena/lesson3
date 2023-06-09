@@ -1,14 +1,17 @@
+import { type } from "os";
 import { useState } from "react";
 
-const MyInput=()=>{
-    const [value, setValue] = useState<string>("");
-    const handleChange: React.ChangeEventHandler<HTMLInputElement>=(e)=>{
-        setValue(e.target.value);
-    }
+interface MyInputProps{
+    value: string | number;
+    name: string;
+    type?: "text" | "number";
+    handleChange:React.ChangeEventHandler<HTMLInputElement>
+}
+
+const MyInput=({value, name, type="text", handleChange}:MyInputProps)=>{    
     return(
         <>
-        <div>{value}</div>        
-        <input type="text" onChange={handleChange} value={value} />
+        <input type={type} name={name} onChange={handleChange} value={value} />
         </>
     )
 };
