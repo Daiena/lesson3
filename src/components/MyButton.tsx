@@ -5,7 +5,7 @@ interface myBattonProps{
 }
 const MyButton=({children, type="button", onClick}:myBattonProps)=>{
     
-    return <button type={type} onClick={onClick}>{children}</button>
+    return <button className="btn btn-primary" type={type} onClick={onClick}>{children}</button>
 };
 
 export default MyButton;

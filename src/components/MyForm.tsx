@@ -30,12 +30,32 @@ const MyForm=({addProduct}:MyFormProps)=>{
         setProduct(initValue);
     };
     return(
+        <>
+        <h2>Добавление товаров</h2>
         <form onSubmit={handleSubmit}>
-            <MyInput handleChange={handleChange} name="name" value={product.name} />
-            <MyInput type="number" handleChange={handleChange} name="count" value={product.count}  />
-            <MyInput type="number" handleChange={handleChange} name="price" value={product.price} />
+            <MyInput
+                handleChange={handleChange} 
+                name="name" 
+                value={product.name} 
+                placeholder="Название товара"
+            />
+            <MyInput 
+                type="number" 
+                handleChange={handleChange} 
+                name="count" 
+                value={product.count} 
+                placeholder="Количество"  
+            />
+            <MyInput 
+                type="number" 
+                handleChange={handleChange} 
+                name="price" value={product.price} 
+                placeholder="Цена" 
+            />
             <MyButton type="submit">Добавить товар</MyButton>
         </form>
+        </>
+       
     )
 }
 

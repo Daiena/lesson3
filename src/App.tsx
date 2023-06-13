@@ -1,15 +1,16 @@
-import MyButton from './components/MyButton';
-import Profile from './components/Profile';
-import Product, { IProduct } from "./components/Product";
-import ProductList from './components/ProductList';
-import Counter from './components/Counter';
-import { useState } from 'react';
-import MyInput from './components/MyInput';
-import MyForm from './components/MyForm';
+// import MyButton from './components/MyButton';
+// import Profile from './components/Profile';
+// import Product, { IProduct } from "./components/Product";
+// import ProductList from './components/ProductList';
+// import Counter from './components/Counter';
+// import { useState } from 'react';
+// import MyInput from './components/MyInput';
+// import MyForm from './components/MyForm';
+import HomePage from './pages/HomePage';
 
-const initialState=[
-  {id:1, count:1, name:"Бананы", inCart:false, price:1000},
-]
+// const initialState=[
+//   {id:1, count:1, name:"Бананы", inCart:false, price:1000},
+// ]
 
 function App() {
 //   const products: IProduct[]=[
@@ -28,29 +29,32 @@ function App() {
 //     inCart: true,
 // }
 //   ]
-const [productList, setProductList]=useState<IProduct[]>(initialState);
+// const [productList, setProductList]=useState<IProduct[]>(initialState);
 
-const addProduct=(product:IProduct)=>{
-  product.id=Math.max(...productList.map(p=>p.id), 0)+1;
-  setProductList([...productList, product]);
-};
+// const addProduct=(product:IProduct)=>{
+//   product.id=Math.max(...productList.map(p=>p.id), 0)+1;
+//   setProductList([...productList, product]);
+// };
 
-const updateProduct=(product:IProduct):void=>{
-  setProductList(productList.map(p =>p.id === product.id? product : p))
-}
+// const updateProduct=(product:IProduct):void=>{
+//   setProductList(productList.map(p =>p.id === product.id? product : p))
+// }
 
-const deleteProduct=(product:IProduct):void=>{
-  setProductList(productList.filter(p =>p.id !== product.id))
-}
+// const deleteProduct=(product:IProduct):void=>{
+//   setProductList(productList.filter(p =>p.id !== product.id))
+// }
 
   return(
-    <div>
-      <MyForm addProduct={addProduct} />
-      <ProductList products={productList}
-      updateProduct={updateProduct}
-      deleteProduct={deleteProduct}
-      />
+    <div className='container'>
+    <HomePage />
     </div>
+    // <div>
+    //   <MyForm addProduct={addProduct} />
+    //   <ProductList products={productList}
+    //   updateProduct={updateProduct}
+    //   deleteProduct={deleteProduct}
+    //   />
+    // </div>
   )
 };
 

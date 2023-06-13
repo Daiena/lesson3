@@ -8,7 +8,7 @@ interface ProductListProps{
 
 const ProductList=({products, updateProduct, deleteProduct}: ProductListProps)=>{
     return (
-        <div>
+        <table className="table table-bordered">
             {products.length >0 ? products.map((product) =>(
                 <Product
                  key={product.id} 
@@ -18,10 +18,15 @@ const ProductList=({products, updateProduct, deleteProduct}: ProductListProps)=>
                  />
             )) 
             : (
-                <h2> Добавьте товары</h2>
+                <tr>
+                    <td>
+                        <h2> Добавьте товары</h2>
+                    </td>
+                </tr>
+                
             )
             }          
-        </div>
+        </table>
     );
 };
 
