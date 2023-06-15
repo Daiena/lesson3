@@ -15,10 +15,18 @@ interface MyFormProps{
     addProduct: (product:IProduct)=>void;
 }
 
+type TStatusForm = "empty" | "typing" | "submitting" | "success" | "error";
+
 const MyForm=({addProduct}:MyFormProps)=>{ 
+    const [status, setStatus]=useState<TStatusForm>("empty");
     const [product, setProduct]=useState<IProduct>(initValue);
     const handleChange:React.ChangeEventHandler<HTMLInputElement>=(e)=>{
-       setProduct({
+       if (e.target.value.length !==0) {
+        setStatus("typing")
+       } else {
+        setStatus("empty")
+       }
+        setProduct({
         ...product,
         [e.target.name]:e.target.value,
        });   
@@ -52,7 +60,7 @@ const MyForm=({addProduct}:MyFormProps)=>{
                 name="price" value={product.price} 
                 placeholder="Цена" 
             />
-            <MyButton type="submit">Добавить товар</MyButton>
+            <MyButton disabled={status !=="typing"} type="submit">Добавить товар</MyButton>
         </form>
         </>
        
