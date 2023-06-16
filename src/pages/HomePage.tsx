@@ -8,6 +8,7 @@ import { useState } from 'react';
 import MyInput from '../components/MyInput';
 import MyForm from '../components/MyForm';
 import { productReducer } from "../store/productReducer";
+import ThemesChanger from "../components/ThemesChanger";
 
 const initialState=[
     {id:1, count:1, name:"Бананы", inCart:false, price:1000},
@@ -43,6 +44,11 @@ const deleteProduct=(product:IProduct):void=>{
 }
     return(
     <>
+        <div className="row">
+            <div className="col-12">
+            <ThemesChanger />
+            </div>
+        </div>
         <div className="row">
             <div className="col-12">
             <MyForm addProduct={addProduct} />
