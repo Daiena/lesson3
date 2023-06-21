@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/themeContext";
 import classNames from "classnames";
 import { useTheme } from "../hooks/useTheme";
 

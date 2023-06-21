@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import {TTheme} from "../types";
-import { ThemeContext, ThemeDispatchContext } from "../context/themeContext";
 import { useTheme } from "../hooks/useTheme";
 import { useThemeDispatch } from "../hooks/useThemeDispatch";
 
