@@ -11,22 +11,34 @@ import Product from "./Product";
 const ProductList=()=>{
     const products= useProducts();
     return (
-        <table className="table table-bordered">
-            {products.length >0 ? products.map((product) =>(
-                <Product
-                 key={product.id} 
-                 product={product}
-                 />
-            )) 
-            : (
+        <table className="table table-bordered table-striped mt-3">
+            <thead>
                 <tr>
-                    <td>
-                        <h2> Добавьте товары</h2>
-                    </td>
+                    <th>В корзине</th>
+                    <th>Наименование</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Сумма</th>
+                    <th>colSpan={4}</th>
                 </tr>
-                
-            )
-            }          
+            </thead>
+            <tbody>
+                {products.length >0 ? products.map((product) =>(
+                    <Product
+                    key={product.id} 
+                    product={product}
+                    />
+                )) 
+                : (
+                    <tr>
+                        <td>
+                            <h2> Добавьте товары</h2>
+                        </td>
+                    </tr>
+                    
+                )
+                } 
+            </tbody>   
         </table>
     );
 };
