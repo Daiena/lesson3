@@ -1,24 +1,41 @@
-import { log } from "console";
 import React, { useRef, useState } from "react";
-import MyInput from "../components/MyInput";
 import MyButton from "../components/MyButton";
 
 const TestPage=()=>{
-    const myRef=useRef(0);
-    const [value, setValue]=useState("");
-    const handleChange:React.ChangeEventHandler<HTMLInputElement>=(e)=>{
-        setValue(e.target.value);
+    const [startTime, setStartTime]=useState<number | null>(null);
+    const [now, setNow]=useState<number | null>(null);
+    const intervalRef=useRef<any>(null);
+    const handleClickStart=()=>{
+        setStartTime(Date.now());
+        setNow(Date.now());
+        clearInterval(intervalRef.current);
+        intervalRef.current = setInterval(()=>{
+            setNow(Date.now())
+        }, 10)
+    }  
+    const handleClickStop=()=>{
+        clearInterval(intervalRef.current)
+    }  
+
+    let secondsPassed=0;
+    if(startTime !==null && now !==null){
+        secondsPassed=(now-startTime)/1000;  
     }
-    const handleClick=()=>{
-        alert(`Нажали ${myRef.current++} раз`)
-    }
-    console.log("Рендер");
-    
     return (
         <div>
-            <MyInput value={value} name="test" handleChange={handleChange} />
-            <MyButton onClick={handleClick}>Кнопка</MyButton>
+            <div>
+                Время: {startTime} мс
+            </div>
+            <div>
+                Текущее время: {now} мс
+            </div>
+            <div>
+                Прошедшее время: {secondsPassed} с
+            </div>
+            <MyButton onClick={handleClickStart}>Старт</MyButton>
+            <MyButton onClick={handleClickStop}>Стоп</MyButton>
         </div>
+        
     );
 };
 
