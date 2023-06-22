@@ -1,42 +1,44 @@
-import React, { useRef, useState } from "react";
-import MyButton from "../components/MyButton";
+import { log } from 'console';
+import { useRef, useState } from 'react';
 
-const TestPage=()=>{
-    const [startTime, setStartTime]=useState<number | null>(null);
-    const [now, setNow]=useState<number | null>(null);
-    const intervalRef=useRef<any>(null);
-    const handleClickStart=()=>{
-        setStartTime(Date.now());
-        setNow(Date.now());
-        clearInterval(intervalRef.current);
-        intervalRef.current = setInterval(()=>{
-            setNow(Date.now())
-        }, 10)
-    }  
-    const handleClickStop=()=>{
-        clearInterval(intervalRef.current)
-    }  
+export default function Chat() {
+  const [text, setText] = useState('');
+  const [isSending, setIsSending] = useState(false);
+  const timeoutID = useRef<any>(null);
 
-    let secondsPassed=0;
-    if(startTime !==null && now !==null){
-        secondsPassed=(now-startTime)/1000;  
-    }
-    return (
-        <div>
-            <div>
-                Время: {startTime} мс
-            </div>
-            <div>
-                Текущее время: {now} мс
-            </div>
-            <div>
-                Прошедшее время: {secondsPassed} с
-            </div>
-            <MyButton onClick={handleClickStart}>Старт</MyButton>
-            <MyButton onClick={handleClickStop}>Стоп</MyButton>
-        </div>
-        
-    );
-};
+  function handleSend() {
+    setIsSending(true);
+    timeoutID.current = setTimeout(() => {
+      alert('Sent!');
+      setIsSending(false);
+    }, 3000);
+    console.log("Нажали отправить", timeoutID.current);
+    
+  }
 
-export default TestPage;
+  function handleUndo() {
+    console.log("Нажали отмена", timeoutID.current);
+    setIsSending(false);
+    clearTimeout(timeoutID.current);
+  }
+
+  return (
+    <>
+      <input
+        disabled={isSending}
+        value={text}
+        onChange={e => setText(e.target.value)}
+      />
+      <button
+        disabled={isSending}
+        onClick={handleSend}>
+        {isSending ? 'Sending...' : 'Send'}
+      </button>
+      {isSending &&
+        <button onClick={handleUndo}>
+          Undo
+        </button>
+      }
+    </>
+  );
+}
