@@ -1,26 +1,14 @@
-import React, { useRef, useState } from "react";
-import MyInput from "../components/MyInput";
-import MyButton from "../components/MyButton";
+import React from "react";
+import MyVideoPlayer from "../components/VideoPlayer/MyVideoPlayer"
+
 
 const TestPage=()=>{
-    const [value, setValue]=useState("");
-    const inputRef=useRef<HTMLInputElement>(null);
-    const handleClick=()=>{
-        inputRef.current?.focus();
-    }
-    const handleChange:React.ChangeEventHandler<HTMLInputElement>=(e)=>{
-        setValue(e.target.value);
-    }
+   
     return(
-        <div>
-            <MyInput
-             type="text" 
-             name="test"
-             ref={inputRef}
-             value={value}
-             handleChange={handleChange}
-            />
-            <MyButton onClick={handleClick}>Focus</MyButton>
+        <div className="row">
+            <div className="col-8">
+             <MyVideoPlayer />
+            </div>
         </div>
     )
 }
