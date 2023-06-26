@@ -3,6 +3,8 @@ import MyButton from "./MyButton";
 import MyInput from "./MyInput";
 import { IProduct } from "../types";
 import { useProductDispatch } from "../hooks/useProductDispatch";
+import { useListProduct } from "../hooks/useListProduct";
+import { flushSync } from "react-dom";
 
 
 const initValue:IProduct={
@@ -21,6 +23,7 @@ type TStatusForm = "empty" | "typing" | "submitting" | "success" | "error";
 
 const MyForm=()=>{ 
     const dispatch=useProductDispatch();
+    const listRef=useListProduct();
     const [status, setStatus]=useState<TStatusForm>("empty");
     const [product, setProduct]=useState<IProduct>(initValue);
     const handleChange:React.ChangeEventHandler<HTMLInputElement>=(e)=>{
@@ -37,11 +40,17 @@ const MyForm=()=>{
     };
     const handleSubmit:React.FormEventHandler<HTMLFormElement>=(e)=>{
         e.preventDefault();
-        dispatch({
+        flushSync(()=>{
+            dispatch({
                 type: "add",
                 payload: product,
               })
+        })
         setProduct(initValue);
+        listRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+        })
     };
     return(
         <>

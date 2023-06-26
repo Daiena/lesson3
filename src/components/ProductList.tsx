@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import { useProducts } from "../hooks/useProducts";
 import Product from "./Product";
+import { useListProduct } from "../hooks/useListProduct";
 
 
 // interface ProductListProps{
@@ -10,6 +12,7 @@ import Product from "./Product";
 
 const ProductList=()=>{
     const products= useProducts();
+    const listRef=useListProduct();
     return (
         <table className="table table-bordered table-striped mt-3">
             <thead>
@@ -22,7 +25,7 @@ const ProductList=()=>{
                     <th>colSpan={4}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody ref={listRef}>
                 {products.length >0 ? products.map((product) =>(
                     <Product
                     key={product.id} 
