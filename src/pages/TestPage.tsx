@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import MyVideoPlayer from "../components/VideoPlayer/MyVideoPlayer"
 import MyInput from "../components/MyInput";
+import { Link } from "react-router-dom";
 
 
 const TestPage=()=>{
@@ -26,10 +27,8 @@ const TestPage=()=>{
     }
     return(
         <div className="row">
-              
-            <div className="col-8">
-            <button ref={buttonRef}>Кнопка</button>
-            <MyInput value={value} name="test" handleChange={handleChange} />
+            <div className="col-8 pt-3">
+                <Link to=".." relative="path">Ссылка на рандом</Link>
             </div>
         </div>
     )
