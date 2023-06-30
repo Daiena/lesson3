@@ -1,0 +1,24 @@
+{"products":[
+        {
+           "id":1,
+           "count":1, 
+           "name":"Киви", 
+           "inCart":false, 
+           "price":100
+        },
+        {
+            "id": 2,
+            "count": 1, 
+            "name":"Яблоки", 
+            "inCart":false, 
+            "price": 70
+         },
+         {
+            "id": 3,
+            "count":1, 
+            "name":"Груши", 
+            "inCart":false, 
+            "price":120
+         } 
+    ]
+}

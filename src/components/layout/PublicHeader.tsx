@@ -15,14 +15,16 @@ const PublicHeader = () => {
                         <li><a href="/products" className="nav-link px-2 text-white">Продукты</a></li>
                         <li><a href="/about" className="nav-link px-2 text-white">О нас</a></li>
                         <li><a href="/contact" className="nav-link px-2 text-white">Контакты</a></li> */}
-                        <li><Link to="/" className="nav-link px-2 text-secondary">Главная</Link></li>
+                        {/* <li><Link to="/" className="nav-link px-2 text-secondary">Главная</Link></li>
                         <li><Link to="/products" className="nav-link px-2 text-white">Продукты</Link></li>
                         <li><Link to="/about" className="nav-link px-2 text-white">О нас</Link></li>
-                        <li><Link to="/contact" className="nav-link px-2 text-white">Контакты</Link></li>
-                        {/* <li><NavLink to="/" className={classForLink}>Главная</NavLink></li>
+                        <li><Link to="/contact" className="nav-link px-2 text-white">Контакты</Link></li> */}
+                        <li><NavLink to="/" className={classForLink}>{({isActive})=>{
+                            return isActive ? "✔ Главная": "Главная";
+                        }}</NavLink></li>
                         <li><NavLink to="/products" className={classForLink}>Продукты</NavLink></li>
                         <li><NavLink to="/about" className={classForLink}>О нас</NavLink></li>
-                        <li><NavLink to="/contact" className={classForLink}>Контакты</NavLink></li> */}
+                        <li><NavLink to="/contact" className={classForLink}>Контакты</NavLink></li>
                     </ul>
 
                     <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
